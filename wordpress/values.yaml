@@ -1,0 +1,45 @@
+persistence:
+  enabled: true
+  pdName: wordpress-pv
+  storageSize: 2Gi
+  storageClass: manual
+  path: /data/wordpress-pv
+  accessModes: 
+    - ReadWriteOnce
+  size: 1Gi
+
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+  nodePort: 30772
+
+autoscaling:
+  enabled: false
+
+
+replicaCount: 2
+
+
+image:
+  registry: docker.io
+  repository: wordpress
+  tag: 5.8.3-php7.4-apache
+  pullPolicy: IfNotPresent
+
+
+
+volume:
+  name: wordpress-data
+  mountPath: /var/www
+
+
+env:
+  host: 
+  password: mysql1234 
+  user: root
+  db: wordpress
+
+
+cname: wordpress-volume
