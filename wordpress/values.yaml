@@ -1,6 +1,6 @@
 persistence:
   enabled: true
-  pdName: wordpress-pv
+  pdName: wordpress
   storageSize: 2Gi
   storageClass: manual
   path: /data/wordpress-pv
@@ -19,7 +19,7 @@ autoscaling:
   enabled: false
 
 
-replicaCount: 2
+replicaCount: 1
 
 
 image:

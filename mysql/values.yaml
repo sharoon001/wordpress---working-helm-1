@@ -1,0 +1,31 @@
+persistence:
+  enabled: true
+  pdName: mysql
+  storageSize: 5Gi
+  storageClass: manual
+  path: /data/mysql-pv
+  accessModes:
+    - ReadWriteOnce
+  size: 2Gi
+
+
+
+cname: mysql-volume
+
+
+volume:
+  name: mysql-datia
+  mountPath: /var/lib/mysql
+
+
+image:
+  registry: docker.io
+  repository:  mysql
+  tag: 5.6
+
+service:
+  port: 3306
+
+autoscaling:
+  enabled: false
+
